@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.robot.subsystem.MecanumDrivetrain;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Shooter;
 
 
 @TeleOp(name="TeleOP-IntoTheDeep-", group="Iterative Opmode")
@@ -13,12 +14,14 @@ public class TeleOP extends OpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     private MecanumDrivetrain mecanumDrivetrain;
+    private Shooter shooter;
 
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
 
         mecanumDrivetrain = new MecanumDrivetrain(hardwareMap);
+        shooter = new Shooter(hardwareMap);
 
         telemetry.addData("Status", "Initialized");
     }
@@ -48,6 +51,9 @@ public class TeleOP extends OpMode {
           double rx = -gamepad1.right_stick_x;
           mecanumDrivetrain.mecanumDrive(x / 4,y / 4,rx / 4);
       }
+
+      //shooter
+
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
     }
