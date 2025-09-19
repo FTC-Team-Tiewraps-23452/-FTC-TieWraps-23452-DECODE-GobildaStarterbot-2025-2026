@@ -19,4 +19,11 @@ public class Shooter {
     public void moveShooter(double speed) {
         shooterMotor.setPower(speed);
     }
+
+    /**
+    *  Vraagt data van de shooterMotor op.
+     **/
+    public double[] dataShooterMotor(){
+        return new double[]{shooterMotor.getPower(), shooterMotor.getCurrentPosition()};
+    }
 }
