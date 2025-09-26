@@ -2,12 +2,23 @@ package org.firstinspires.ftc.teamcode.robot.subsystem;
 
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 public class Storage {
-    private final CRServo left;
+    private final CRServo storageLeft;
+    private final CRServo storageRight;
 
     public Storage(HardwareMap hardwareMap){
-        left = hardwareMap.get(CRServo.class, "leftServo");
+        storageLeft = hardwareMap.get(CRServo.class, "storageLeft");
+        storageRight = hardwareMap.get(CRServo.class, "storageRight");
+        storageLeft.setDirection(CRServo.Direction.FORWARD);
+        storageRight.setDirection(CRServo.Direction.REVERSE);
+    }
+
+    public void moveStorage(double speed) {
+        storageLeft.setPower(speed);
+    }
+
+    public double dataStorageCRServo(){
+        return storageLeft.getPower();
     }
 }
