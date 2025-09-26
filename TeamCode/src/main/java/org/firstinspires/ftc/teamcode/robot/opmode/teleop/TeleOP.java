@@ -53,9 +53,15 @@ public class TeleOP extends OpMode {
       }
 
       //shooter
-
+        if (gamepad1.right_bumper){
+            shooter.moveShooter(0.5);
+        } else {
+            shooter.moveShooter(0);
+        }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.addData("shooterMotor", "Power:" + shooter.dataShooterMotor()[0]);
+        telemetry.addData("shooterMotor", "CurrentPosition:" + shooter.dataShooterMotor()[1]);
     }
 
     @Override
