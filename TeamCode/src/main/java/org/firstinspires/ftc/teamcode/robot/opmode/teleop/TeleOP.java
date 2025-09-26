@@ -55,6 +55,7 @@ public class TeleOP extends OpMode {
       //shooter
         if (gamepad1.right_bumper){
             shooter.moveShooter(0.5);
+            // samen met storage
         } else {
             shooter.moveShooter(0);
         }
