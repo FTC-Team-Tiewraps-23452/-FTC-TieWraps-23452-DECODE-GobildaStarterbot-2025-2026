@@ -14,11 +14,15 @@ public class Storage {
         storageRight.setDirection(CRServo.Direction.REVERSE);
     }
 
+    private void moveStorageLeft(double speed) { storageLeft.setPower(speed);}
+    private void moveStorageRight(double speed) { storageRight.setPower(speed);}
     public void moveStorage(double speed) {
-        storageLeft.setPower(speed);
+        moveStorageLeft(speed);
+        moveStorageRight(speed);
     }
-
-    public double dataStorageCRServo(){
-        return storageLeft.getPower();
-    }
+    /**
+     * Vraagt data op van storage CRServo's.
+    **/
+    public double dataStorageCRServoLeft(){ return storageLeft.getPower();}
+    public double dataStorageCRServoRight() { return storageRight.getPower();}
 }

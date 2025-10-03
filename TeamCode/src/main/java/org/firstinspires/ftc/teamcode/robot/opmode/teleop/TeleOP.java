@@ -60,7 +60,8 @@ public class TeleOP extends OpMode {
       }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("storageCRServo", "Power:" + storage.dataStorageCRServo());
+        telemetry.addData("storageLeft", "Power:" + storage.dataStorageCRServoLeft());
+        telemetry.addData("storageRight", "Power:" + storage.dataStorageCRServoRight());
     }
 
     @Override
