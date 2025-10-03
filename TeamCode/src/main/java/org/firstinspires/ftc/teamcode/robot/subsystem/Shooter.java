@@ -21,9 +21,10 @@ public class Shooter {
     }
 
     /**
-    *  Vraagt data van de shooterMotor op.
+     * Vraagt data van de shootermotor op.
      **/
     public double[] dataShooterMotor(){
         return new double[]{shooterMotor.getPower(), shooterMotor.getCurrentPosition()};
     }
+
 }
