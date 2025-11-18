@@ -6,25 +6,25 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.robot.subsystem.MecanumDrivetrain;
-import org.firstinspires.ftc.teamcode.robot.subsystem.Storage;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Shooter;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Storage;
 
 
-@TeleOp(name="TeleOP-IntoTheDeep-", group="Iterative Opmode")
+@TeleOp(name="TeleOP-DECODE-", group="Iterative Opmode")
 public class TeleOP extends OpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     private MecanumDrivetrain mecanumDrivetrain;
-    private Storage storage;
     private Shooter shooter;
+    private Storage storage;
 
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
 
         mecanumDrivetrain = new MecanumDrivetrain(hardwareMap);
-        storage = new Storage(hardwareMap);
         shooter = new Shooter(hardwareMap);
+        storage = new Storage(hardwareMap);
 
         telemetry.addData("Status", "Initialized");
     }
@@ -55,22 +55,17 @@ public class TeleOP extends OpMode {
           mecanumDrivetrain.mecanumDrive(x / 4,y / 4,rx / 4);
       }
 
-      if(gamepad1.right_bumper){
-          storage.moveStorage(0.5);
-          // samen met shooter
-      } else {
-          storage.moveStorage(0);
-      }
-
-        telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("storageLeft", "Power:" + storage.dataStorageCRServoLeft());
-        telemetry.addData("storageRight", "Power:" + storage.dataStorageCRServoRight());
       //shooter
         if (gamepad1.right_bumper || gamepad1.right_trigger>=0.5){
-            shooter.moveShooter(0.5);
-            // samen met storage
+            shooter.moveShooter(-1);
         } else {
             shooter.moveShooter(0);
+        }
+
+        if (gamepad1.left_bumper) {
+            storage.moveStorage(0.35);
+        } else {
+            storage.moveStorage(0);
         }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());

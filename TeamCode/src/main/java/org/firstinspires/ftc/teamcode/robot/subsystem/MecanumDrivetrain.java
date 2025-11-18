@@ -23,10 +23,10 @@ public class MecanumDrivetrain {
      *                    on the actual robot
      */
     public MecanumDrivetrain(HardwareMap hardwareMap){
-        rightFront = hardwareMap.get(DcMotor.class, "motor0");
-        leftFront =  hardwareMap.get(DcMotor.class, "motor1");
-        rightBack =  hardwareMap.get(DcMotor.class, "motor2");
-        leftBack =  hardwareMap.get(DcMotor.class, "motor3");
+        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
+        leftFront =  hardwareMap.get(DcMotor.class, "leftFront");
+        rightBack =  hardwareMap.get(DcMotor.class, "rightBack");
+        leftBack =  hardwareMap.get(DcMotor.class, "leftBack");
 
         rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
