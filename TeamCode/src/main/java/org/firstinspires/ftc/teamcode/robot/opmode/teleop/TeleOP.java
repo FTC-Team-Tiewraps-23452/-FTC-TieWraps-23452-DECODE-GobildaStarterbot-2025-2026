@@ -64,9 +64,8 @@ public class TeleOP extends OpMode {
 
         if (gamepad1.left_bumper) {
             storage.moveStorage(0.35);
-        } else {
             storage.moveStorage(0);
-        }
+        } 
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("shooterMotor", "Power:" + shooter.dataShooterMotor()[0]);
