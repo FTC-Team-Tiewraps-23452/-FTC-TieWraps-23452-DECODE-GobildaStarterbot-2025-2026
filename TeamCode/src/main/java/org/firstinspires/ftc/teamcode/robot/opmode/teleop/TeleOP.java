@@ -5,9 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.robot.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.robot.subsystem.MecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Shooter;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Storage;
+
 
 
 @TeleOp(name="TeleOP-DECODE-", group="Iterative Opmode")
@@ -18,6 +20,8 @@ public class TeleOP extends OpMode {
     private Shooter shooter;
     private Storage storage;
 
+    private Intake intake;
+
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
@@ -25,6 +29,7 @@ public class TeleOP extends OpMode {
         mecanumDrivetrain = new MecanumDrivetrain(hardwareMap);
         shooter = new Shooter(hardwareMap);
         storage = new Storage(hardwareMap);
+        intake = new Intake(hardwareMap);
 
         telemetry.addData("Status", "Initialized");
     }
@@ -68,6 +73,11 @@ public class TeleOP extends OpMode {
             storage.moveStorage(0);
         }
 
+        if (gamepad1.x) {
+            intake.moveIntake(0.5);
+        }else {
+            intake. moveIntake(0);
+        }
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("shooterMotor", "Power:" + shooter.dataShooterMotor()[0]);
         telemetry.addData("shooterMotor", "CurrentPosition:" + shooter.dataShooterMotor()[1]);
@@ -76,5 +86,6 @@ public class TeleOP extends OpMode {
     @Override
     public void stop() {
     }
+
 
 }
