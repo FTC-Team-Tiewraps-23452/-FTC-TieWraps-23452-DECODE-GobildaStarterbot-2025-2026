@@ -69,9 +69,8 @@ public class TeleOP extends OpMode {
 
         if (gamepad1.left_bumper) {
             storage.moveStorage(0.35);
-        } else {
             storage.moveStorage(0);
-        }
+        } 
 
         if (gamepad1.x) {
             intake.moveIntake(0.5);
