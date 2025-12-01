@@ -22,6 +22,8 @@ public class TeleOP extends OpMode {
 
     private Intake intake;
 
+    private boolean test;
+
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
@@ -66,11 +68,25 @@ public class TeleOP extends OpMode {
         } else {
             shooter.moveShooter(0);
         }
+//
+//        if (gamepad1.left_bumper & storage.ballSensor()) {
+//                storage.moveStorage(0.35);
+//        } else {
+//            storage.moveStorage(0);
+//        }
+//
+        if(gamepad1.left_bumper){
+            test = true;
+        }
 
-        if (gamepad1.left_bumper) {
+        if (test){
             storage.moveStorage(0.35);
+            if (!storage.ballSensor()){
+                test = false;
+            }
+        } else {
             storage.moveStorage(0);
-        } 
+        }
 
         if (gamepad1.x) {
             intake.moveIntake(0.5);
