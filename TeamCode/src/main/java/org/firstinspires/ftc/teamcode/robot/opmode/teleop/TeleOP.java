@@ -93,9 +93,15 @@ public class TeleOP extends OpMode {
         }else {
             intake. moveIntake(0);
         }
+
+
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("shooterMotor", "Power:" + shooter.dataShooterMotor()[0]);
         telemetry.addData("shooterMotor", "CurrentPosition:" + shooter.dataShooterMotor()[1]);
+
+        telemetry.addData("ColorSensor", "red" + storage.dataColorSensor()[0]);
+        telemetry.addData("ColorSensor", "green" + storage.dataColorSensor()[1]);
+        telemetry.addData("ColorSensor", "blue" + storage.dataColorSensor()[2]);
     }
 
     @Override

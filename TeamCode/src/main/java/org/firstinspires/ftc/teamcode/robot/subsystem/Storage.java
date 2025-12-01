@@ -29,4 +29,8 @@ public class Storage {
             return false;
         }
     }
+
+    public double[] dataColorSensor(){
+        return new double[]{colorSensor.red(), colorSensor.green(), colorSensor.blue(), colorSensor.alpha(), colorSensor.argb()};
+    }
 }
