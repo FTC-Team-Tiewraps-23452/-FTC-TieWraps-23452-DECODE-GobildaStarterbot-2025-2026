@@ -22,7 +22,7 @@ public class TeleOP extends OpMode {
 
     private Intake intake;
 
-    private boolean test;
+    private boolean bumperLToggle;
 
     @Override
     public void init() {
@@ -76,21 +76,24 @@ public class TeleOP extends OpMode {
 //        }
 //
         if(gamepad1.left_bumper){
-            test = true;
+            bumperLToggle = true;
         }
 
-        if (test){
+        if (bumperLToggle){
             storage.moveStorage(0.35);
             if (!storage.ballSensor()){
-                test = false;
+                bumperLToggle = false;
             }
         } else {
             storage.moveStorage(0);
         }
 
         if (gamepad1.x) {
-            intake.moveIntake(0.5);
-        }else {
+            intake.moveIntake(1);
+        } else if (gamepad1.b) {
+            intake.moveIntake(-1);
+        }
+        else {
             intake. moveIntake(0);
         }
 
