@@ -49,6 +49,7 @@ public class TeleOP extends OpMode {
 
     @Override
     public void loop() {
+
         //drivetrain
         if (gamepad1.left_bumper) {
             double y = -gamepad1.left_stick_y; // Remember, Y stick is reversed!
@@ -98,19 +99,19 @@ public class TeleOP extends OpMode {
 
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("shooterMotor", "Power:" + shooter.dataShooterMotor()[0]);
-        telemetry.addData("shooterMotor", "CurrentPosition:" + shooter.dataShooterMotor()[1]);
+        telemetry.addData("shooterMotor", "Power: " + shooter.dataShooterMotor()[0]);
+        telemetry.addData("shooterMotor", "CurrentPosition: " + shooter.dataShooterMotor()[1]);
 
-        telemetry.addData("ColorSensor", "red" + storage.dataColorSensor()[0]);
-        telemetry.addData("ColorSensor", "green" + storage.dataColorSensor()[1]);
-        telemetry.addData("ColorSensor", "blue" + storage.dataColorSensor()[2]);
+        telemetry.addData("ColorSensor", "red " + storage.dataColorSensor()[0]);
+        telemetry.addData("ColorSensor", "green " + storage.dataColorSensor()[1]);
+        telemetry.addData("ColorSensor", "blue " + storage.dataColorSensor()[2]);
 
 
-        telemetry.addData("greenBallCounter", "GreenBallCounter" + storage.groeneBalSensor());
-        telemetry.addData("purpleBallCounter", "purpleballCounter" + storage.paarseBalSensor());
+        telemetry.addData("greenBallCounter", "GreenBallCounter " + storage.groeneBalSensor());
+        telemetry.addData("purpleBallCounter", "purpleballCounter " + storage.paarseBalSensor());
 
-        telemetry.addData("CurrentColor", "green" + storage.huidigeKleurgroen());
-        telemetry.addData("CurrentColor", "purple" + storage.huidigeKleurpaars());
+        telemetry.addData("CurrentColor", "green " + storage.huidigeKleurgroen());
+        telemetry.addData("CurrentColor", "purple " + storage.huidigeKleurpaars());
 
     }
 

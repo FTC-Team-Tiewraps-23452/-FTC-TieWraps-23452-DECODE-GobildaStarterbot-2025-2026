@@ -13,6 +13,10 @@ public class Storage {
     private int paarseBalTeller;
 
     private int groeneBallTeller;
+
+    private boolean groenToggle;
+    private boolean paarsToggle;
+
     public Storage(HardwareMap hardwareMap){
         storageServo = hardwareMap.get(Servo.class, "storageServo");
         storageServo.setDirection(Servo.Direction.FORWARD);
@@ -33,20 +37,26 @@ public class Storage {
     }
 
     public int paarseBalSensor(){
-        if ((colorSensor.red()>45)&(colorSensor.blue()>45)){
-            return paarseBalTeller = paarseBalTeller + 1;
-        } else {
-            return paarseBalTeller;
+        if (colorSensor.blue()>55 & !paarsToggle){
+             paarseBalTeller = paarseBalTeller + 1;
+             paarsToggle = true;
+        } else if (colorSensor.blue()>55){
 
+        } else {
+            paarsToggle = false;
         }
+        return paarseBalTeller;
     }
   
     public int groeneBalSensor(){
-        if (colorSensor.green()>45){
-            return groeneBallTeller = groeneBallTeller + 1;
+        if (colorSensor.green()>55 & !groenToggle){
+            groeneBallTeller = groeneBallTeller + 1;
+            groenToggle = true;
+        } else if (colorSensor.green()>55) {
         } else {
-            return groeneBallTeller;
+            groenToggle = false;
         }
+        return groeneBallTeller;
     }
   
     public double[] dataColorSensor(){
@@ -56,7 +66,7 @@ public class Storage {
 
     public boolean huidigeKleurgroen(){
 
-        if (colorSensor.green()>45){
+        if (colorSensor.green()>55){
             return true;
         } else {
             return false;
@@ -65,7 +75,7 @@ public class Storage {
 
     public boolean huidigeKleurpaars(){
 
-        if ((colorSensor.blue()>45)&(colorSensor.red()>45)){
+        if ((colorSensor.blue()>55)){
             return true;
         } else {
             return false;
