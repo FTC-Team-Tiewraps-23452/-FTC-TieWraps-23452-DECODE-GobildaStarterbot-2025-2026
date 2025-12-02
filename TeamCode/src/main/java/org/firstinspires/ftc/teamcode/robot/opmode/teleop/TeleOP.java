@@ -105,6 +105,9 @@ public class TeleOP extends OpMode {
         telemetry.addData("ColorSensor", "red" + storage.dataColorSensor()[0]);
         telemetry.addData("ColorSensor", "green" + storage.dataColorSensor()[1]);
         telemetry.addData("ColorSensor", "blue" + storage.dataColorSensor()[2]);
+
+        telemetry.addData("CurrentColor", "green" + storage.huidigeKleurgroen());
+        telemetry.addData("CurrentColor", "purple" + storage.huidigeKleurpaars());
     }
 
     @Override
