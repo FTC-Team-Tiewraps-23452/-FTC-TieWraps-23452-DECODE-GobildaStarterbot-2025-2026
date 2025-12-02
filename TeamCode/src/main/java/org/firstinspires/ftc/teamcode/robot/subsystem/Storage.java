@@ -40,6 +40,7 @@ public class Storage {
 
         }
     }
+  
     public int groeneBalSensor(){
         if (colorSensor.green()>45){
             return groeneBallTeller = groeneBallTeller + 1;
@@ -47,8 +48,29 @@ public class Storage {
             return groeneBallTeller;
         }
     }
+  
     public double[] dataColorSensor(){
         return new double[]{colorSensor.red(), colorSensor.green(), colorSensor.blue(), colorSensor.alpha(), colorSensor.argb()};
     }
 
- }
+
+    public boolean huidigeKleurgroen(){
+
+        if (colorSensor.green()>45){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean huidigeKleurpaars(){
+
+        if ((colorSensor.blue()>45)&(colorSensor.red()>45)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+
