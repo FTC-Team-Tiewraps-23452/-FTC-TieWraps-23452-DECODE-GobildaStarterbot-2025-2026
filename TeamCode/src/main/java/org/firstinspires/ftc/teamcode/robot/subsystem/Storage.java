@@ -10,7 +10,9 @@ public class Storage {
     private final Servo storageServo;
     private ColorSensor colorSensor;
 
+    private int paarseBalTeller;
 
+    private int groeneBallTeller;
     public Storage(HardwareMap hardwareMap){
         storageServo = hardwareMap.get(Servo.class, "storageServo");
         storageServo.setDirection(Servo.Direction.FORWARD);
@@ -30,7 +32,23 @@ public class Storage {
         }
     }
 
+    public int paarseBalSensor(){
+        if ((colorSensor.red()>45)&(colorSensor.blue()>45)){
+            return paarseBalTeller = paarseBalTeller + 1;
+        } else {
+            return paarseBalTeller;
+
+        }
+    }
+    public int groeneBalSensor(){
+        if (colorSensor.green()>45){
+            return groeneBallTeller = groeneBallTeller + 1;
+        } else {
+            return groeneBallTeller;
+        }
+    }
     public double[] dataColorSensor(){
         return new double[]{colorSensor.red(), colorSensor.green(), colorSensor.blue(), colorSensor.alpha(), colorSensor.argb()};
     }
-}
+
+ }

@@ -50,20 +50,20 @@ public class TeleOP extends OpMode {
     @Override
     public void loop() {
         //drivetrain
-      if (gamepad1.left_bumper){
-          double y = -gamepad1.left_stick_y; // Remember, Y stick is reversed!
-          double x = gamepad1.left_stick_x;
-          double rx = -gamepad1.right_stick_x;
-          mecanumDrivetrain.mecanumDrive(x, y, rx);
-      } else {
-          double y = -gamepad1.left_stick_y; // Remember, Y stick is reversed!
-          double x = gamepad1.left_stick_x;
-          double rx = -gamepad1.right_stick_x;
-          mecanumDrivetrain.mecanumDrive(x / 4,y / 4,rx / 4);
-      }
+        if (gamepad1.left_bumper) {
+            double y = -gamepad1.left_stick_y; // Remember, Y stick is reversed!
+            double x = gamepad1.left_stick_x;
+            double rx = -gamepad1.right_stick_x;
+            mecanumDrivetrain.mecanumDrive(x, y, rx);
+        } else {
+            double y = -gamepad1.left_stick_y; // Remember, Y stick is reversed!
+            double x = gamepad1.left_stick_x;
+            double rx = -gamepad1.right_stick_x;
+            mecanumDrivetrain.mecanumDrive(x / 4, y / 4, rx / 4);
+        }
 
-      //shooter
-        if (gamepad1.right_bumper || gamepad1.right_trigger>=0.5){
+        //shooter
+        if (gamepad1.right_bumper || gamepad1.right_trigger >= 0.5) {
             shooter.moveShooter(-1);
         } else {
             shooter.moveShooter(0);
@@ -75,13 +75,13 @@ public class TeleOP extends OpMode {
 //            storage.moveStorage(0);
 //        }
 //
-        if(gamepad1.left_bumper){
+        if (gamepad1.left_bumper) {
             bumperLToggle = true;
         }
 
-        if (bumperLToggle){
+        if (bumperLToggle) {
             storage.moveStorage(0.35);
-            if (!storage.ballSensor()){
+            if (!storage.ballSensor()) {
                 bumperLToggle = false;
             }
         } else {
@@ -92,9 +92,8 @@ public class TeleOP extends OpMode {
             intake.moveIntake(1);
         } else if (gamepad1.b) {
             intake.moveIntake(-1);
-        }
-        else {
-            intake. moveIntake(0);
+        } else {
+            intake.moveIntake(0);
         }
 
 
@@ -105,6 +104,9 @@ public class TeleOP extends OpMode {
         telemetry.addData("ColorSensor", "red" + storage.dataColorSensor()[0]);
         telemetry.addData("ColorSensor", "green" + storage.dataColorSensor()[1]);
         telemetry.addData("ColorSensor", "blue" + storage.dataColorSensor()[2]);
+
+        telemetry.addData("greenBallCounter", "GreenBallCounter" + storage.groeneBalSensor());
+        telemetry.addData("purpleBallCounter", "purpleballCounter" + storage.paarseBalSensor());
     }
 
     @Override
